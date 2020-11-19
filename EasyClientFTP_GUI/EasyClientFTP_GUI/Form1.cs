@@ -10,11 +10,23 @@ using System.Windows.Forms;
 
 namespace EasyClientFTP_GUI
 {
-    public partial class Form1 : Form
+    public partial class SelectEntryForm : Form
     {
-        public Form1()
+        public SelectEntryForm()
         {
             InitializeComponent();
+        }
+
+        private void SelectEntryForm_Load(object sender, EventArgs e)
+        {
+            // for loop to pull in entry types
+            string[] EntryType = { "repository.tools", "janik.codes" };
+
+            for (int i = 0; i < EntryType.Length; i++)
+            {
+                this.EntriesList.Items.Add(EntryType[i]);
+            }
+
         }
     }
 }
