@@ -34,10 +34,17 @@ namespace EasyClientFTP_GUI
 
         private void CreateEntryButton_Click(object sender, EventArgs e)
         {
-            EntryType = this.EntriesList.GetItemText(EntriesList.SelectedItem).ToString();
-            CreateEntryForm ScndForm = new CreateEntryForm();
-            ScndForm.Show();
-            this.Hide();
+            if (this.EntriesList.GetItemText(EntriesList.SelectedItem).ToString() != "")
+            {
+                EntryType = this.EntriesList.GetItemText(EntriesList.SelectedItem).ToString();
+                CreateEntryForm ScndForm = new CreateEntryForm();
+                ScndForm.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Please Select an Entry Type.");
+            }
         }
 
         private void SelectEntryForm_FormClosing(object sender, FormClosingEventArgs e)
