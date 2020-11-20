@@ -73,7 +73,7 @@ namespace EasyClientFTP_GUI
             this.CreateEntryButton.TabIndex = 2;
             this.CreateEntryButton.Text = "Create Entry";
             this.CreateEntryButton.UseVisualStyleBackColor = true;
-            this.CreateEntryButton.Click += new System.EventHandler(this.CreateEntryButton_Click_1);
+            this.CreateEntryButton.Click += new System.EventHandler(this.CreateEntryButton_Click);
             // 
             // SelectEntryForm
             // 
@@ -88,6 +88,7 @@ namespace EasyClientFTP_GUI
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SelectEntryForm";
             this.Text = "Select Entry";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SelectEntryForm_FormClosing);
             this.Load += new System.EventHandler(this.SelectEntryForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

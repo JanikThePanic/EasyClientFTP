@@ -12,6 +12,9 @@ namespace EasyClientFTP_GUI
 {
     public partial class SelectEntryForm : Form
     {
+        // will hold the entrytype we want
+        public static string EntryType = "";
+
         public SelectEntryForm()
         {
             InitializeComponent();
@@ -31,14 +34,15 @@ namespace EasyClientFTP_GUI
 
         private void CreateEntryButton_Click(object sender, EventArgs e)
         {
-            this.Close();
-            CreateEntryForm nextForm = new CreateEntryForm();
-            nextForm.ShowDialog();
+            EntryType = this.EntriesList.GetItemText(EntriesList.SelectedItem).ToString();
+            CreateEntryForm ScndForm = new CreateEntryForm();
+            ScndForm.Show();
+            this.Hide();
         }
 
-        private void CreateEntryButton_Click_1(object sender, EventArgs e)
+        private void SelectEntryForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
     }
 }

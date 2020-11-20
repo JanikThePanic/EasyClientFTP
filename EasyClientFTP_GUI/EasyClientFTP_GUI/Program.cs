@@ -16,7 +16,9 @@ namespace EasyClientFTP_GUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SelectEntryForm());
+            SelectEntryForm FirstForm = new SelectEntryForm();
+            FirstForm.Show();
+            Application.Run();
         }
     }
 }

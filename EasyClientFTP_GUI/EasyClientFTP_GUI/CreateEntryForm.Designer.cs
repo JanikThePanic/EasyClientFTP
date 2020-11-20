@@ -41,6 +41,7 @@ namespace EasyClientFTP_GUI
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CreateEntryForm";
             this.Text = "Create Entry";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CreateEntryForm_FormClosing);
             this.Load += new System.EventHandler(this.CreateEntryForm_Load);
             this.ResumeLayout(false);
 
