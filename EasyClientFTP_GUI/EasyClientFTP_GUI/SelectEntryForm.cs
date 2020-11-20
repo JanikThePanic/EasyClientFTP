@@ -28,5 +28,17 @@ namespace EasyClientFTP_GUI
             }
 
         }
+
+        private void CreateEntryButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            CreateEntryForm nextForm = new CreateEntryForm();
+            nextForm.ShowDialog();
+        }
+
+        private void CreateEntryButton_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
