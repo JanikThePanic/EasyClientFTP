@@ -37,9 +37,7 @@ namespace EasyClientFTP_GUI
             // 
             // SelectEntryLabel
             // 
-            this.SelectEntryLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SelectEntryLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.SelectEntryLabel.AutoSize = true;
             this.SelectEntryLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold);
             this.SelectEntryLabel.Location = new System.Drawing.Point(177, 50);
@@ -51,25 +49,24 @@ namespace EasyClientFTP_GUI
             // 
             // EntriesList
             // 
-            this.EntriesList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.EntriesList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.EntriesList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.EntriesList.FormattingEnabled = true;
             this.EntriesList.Location = new System.Drawing.Point(125, 85);
+            this.EntriesList.MaximumSize = new System.Drawing.Size(200, 41);
+            this.EntriesList.MinimumSize = new System.Drawing.Size(200, 41);
             this.EntriesList.Name = "EntriesList";
             this.EntriesList.Size = new System.Drawing.Size(200, 41);
             this.EntriesList.TabIndex = 1;
             // 
             // CreateEntryButton
             // 
-            this.CreateEntryButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CreateEntryButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.CreateEntryButton.AutoSize = true;
+            this.CreateEntryButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.CreateEntryButton.Location = new System.Drawing.Point(185, 145);
             this.CreateEntryButton.Name = "CreateEntryButton";
-            this.CreateEntryButton.Size = new System.Drawing.Size(80, 23);
+            this.CreateEntryButton.Size = new System.Drawing.Size(75, 23);
             this.CreateEntryButton.TabIndex = 2;
             this.CreateEntryButton.Text = "Create Entry";
             this.CreateEntryButton.UseVisualStyleBackColor = true;
@@ -86,6 +83,7 @@ namespace EasyClientFTP_GUI
             this.Controls.Add(this.SelectEntryLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "SelectEntryForm";
             this.Text = "Select Entry";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SelectEntryForm_FormClosing);

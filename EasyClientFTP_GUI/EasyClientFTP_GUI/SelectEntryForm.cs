@@ -23,11 +23,11 @@ namespace EasyClientFTP_GUI
         private void SelectEntryForm_Load(object sender, EventArgs e)
         {
             // for loop to pull in entry types
-            string[] EntryType = { "repository.tools", "janik.codes" };
+            string[] EntryTypesAvailable = { "repository.tools", "janik.codes" };
 
-            for (int i = 0; i < EntryType.Length; i++)
+            foreach (string i in EntryTypesAvailable)
             {
-                this.EntriesList.Items.Add(EntryType[i]);
+                this.EntriesList.Items.Add(i);
             }
 
         }
