@@ -32,8 +32,10 @@ namespace EasyClientFTP_GUI
 
         }
 
+        // start using selected entry
         private void CreateEntryButton_Click(object sender, EventArgs e)
         {
+            // checks to see if a entry tyoe was selected from the listBox
             if (this.EntriesList.GetItemText(EntriesList.SelectedItem).ToString() != "")
             {
                 EntryType = this.EntriesList.GetItemText(EntriesList.SelectedItem).ToString();
@@ -43,6 +45,7 @@ namespace EasyClientFTP_GUI
             }
             else
             {
+                // if not
                 MessageBox.Show("Please Select an Entry Type.");
             }
         }
@@ -50,6 +53,12 @@ namespace EasyClientFTP_GUI
         private void SelectEntryForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        // double tap entry to use it
+        private void EntriesList_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            CreateEntryButton_Click(this, null);
         }
     }
 }

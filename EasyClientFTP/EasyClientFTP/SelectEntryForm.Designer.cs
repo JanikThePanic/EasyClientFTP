@@ -58,6 +58,7 @@ namespace EasyClientFTP_GUI
             this.EntriesList.Name = "EntriesList";
             this.EntriesList.Size = new System.Drawing.Size(200, 41);
             this.EntriesList.TabIndex = 1;
+            this.EntriesList.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.EntriesList_MouseDoubleClick);
             // 
             // CreateEntryButton
             // 

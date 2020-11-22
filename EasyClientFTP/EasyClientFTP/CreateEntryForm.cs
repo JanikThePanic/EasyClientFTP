@@ -46,7 +46,7 @@ namespace EasyClientFTP_GUI
                 textInput.ForeColor = System.Drawing.Color.Gray;
                 textInput.Text = innerText;
                 // make it multiline
-                textInput.Multiline = true;
+                // textInput.Multiline = true;
                 // the objects name
                 textInput.Name = inputDetails[i]+"Input";
                 // textboxes size and location on the form
@@ -70,6 +70,16 @@ namespace EasyClientFTP_GUI
                     {
                         textInput.ForeColor = System.Drawing.Color.Gray;
                         textInput.Text = innerText;
+                    }
+                };
+
+                // if enter is pressed it will do .GotFocus which would clear the textbox, so lets not have that
+                textInput.KeyDown += (s, e) =>
+                {
+                    if (e.KeyCode == Keys.Enter)
+                    {
+                        SendKeys.Send("{TAB}");
+                        e.SuppressKeyPress = true;
                     }
                 };
 
