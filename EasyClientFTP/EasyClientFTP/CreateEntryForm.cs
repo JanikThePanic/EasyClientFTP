@@ -7,11 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
+using System.Collections.Specialized;
 
-namespace EasyClientFTP_GUI
+namespace EasyClientFTP
 {
     public partial class CreateEntryForm : Form
     {
+        string hostName;
+        int portNum;
+        string userName;
+        string password;
+
         public CreateEntryForm()
         {
             // varibles that will hold the information on how many textboxs are need and their innerText
@@ -50,7 +57,7 @@ namespace EasyClientFTP_GUI
                 // the objects name
                 textInput.Name = inputDetails[i]+"Input";
                 // textboxes size and location on the form
-                textInput.Size = new Size(735, 18);
+                textInput.Size = new Size(593, 18);
                 textInput.Location = new Point(24, 50 + 30 * i);
 
                 // place holder code
@@ -96,6 +103,12 @@ namespace EasyClientFTP_GUI
         private void CreateEntryForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void AddFTPKeyButton_Click(object sender, EventArgs e)
+        {
+            AddFTPKeyForm nextForm = new AddFTPKeyForm();
+            nextForm.ShowDialog();
         }
     }
 }

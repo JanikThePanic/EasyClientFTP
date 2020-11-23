@@ -1,5 +1,5 @@
 ﻿
-namespace EasyClientFTP_GUI
+namespace EasyClientFTP
 {
     partial class SelectEntryForm
     {

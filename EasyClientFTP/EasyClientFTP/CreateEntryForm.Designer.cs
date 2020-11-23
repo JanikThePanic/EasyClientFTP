@@ -1,5 +1,5 @@
 ﻿
-namespace EasyClientFTP_GUI
+namespace EasyClientFTP
 {
     partial class CreateEntryForm
     {
@@ -31,6 +31,8 @@ namespace EasyClientFTP_GUI
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateEntryForm));
             this.EntryTypeLabel = new System.Windows.Forms.Label();
+            this.AddFTPKeyButton = new System.Windows.Forms.Button();
+            this.AddEntryButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // EntryTypeLabel
@@ -42,11 +44,32 @@ namespace EasyClientFTP_GUI
             this.EntryTypeLabel.Size = new System.Drawing.Size(0, 13);
             this.EntryTypeLabel.TabIndex = 0;
             // 
+            // AddFTPKeyButton
+            // 
+            this.AddFTPKeyButton.Location = new System.Drawing.Point(644, 50);
+            this.AddFTPKeyButton.Name = "AddFTPKeyButton";
+            this.AddFTPKeyButton.Size = new System.Drawing.Size(113, 23);
+            this.AddFTPKeyButton.TabIndex = 1;
+            this.AddFTPKeyButton.Text = "Add FTP Key";
+            this.AddFTPKeyButton.UseVisualStyleBackColor = true;
+            this.AddFTPKeyButton.Click += new System.EventHandler(this.AddFTPKeyButton_Click);
+            // 
+            // AddEntryButton
+            // 
+            this.AddEntryButton.Location = new System.Drawing.Point(644, 79);
+            this.AddEntryButton.Name = "AddEntryButton";
+            this.AddEntryButton.Size = new System.Drawing.Size(113, 23);
+            this.AddEntryButton.TabIndex = 2;
+            this.AddEntryButton.Text = "Add Entry";
+            this.AddEntryButton.UseVisualStyleBackColor = true;
+            // 
             // CreateEntryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 461);
+            this.Controls.Add(this.AddEntryButton);
+            this.Controls.Add(this.AddFTPKeyButton);
             this.Controls.Add(this.EntryTypeLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -63,5 +86,7 @@ namespace EasyClientFTP_GUI
         #endregion
 
         private System.Windows.Forms.Label EntryTypeLabel;
+        private System.Windows.Forms.Button AddFTPKeyButton;
+        private System.Windows.Forms.Button AddEntryButton;
     }
 }

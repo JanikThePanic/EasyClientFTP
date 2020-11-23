@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EasyClientFTP_GUI
+namespace EasyClientFTP
 {
     public partial class SelectEntryForm : Form
     {
@@ -39,8 +39,8 @@ namespace EasyClientFTP_GUI
             if (this.EntriesList.GetItemText(EntriesList.SelectedItem).ToString() != "")
             {
                 EntryType = this.EntriesList.GetItemText(EntriesList.SelectedItem).ToString();
-                CreateEntryForm ScndForm = new CreateEntryForm();
-                ScndForm.Show();
+                CreateEntryForm SendForm = new CreateEntryForm();
+                SendForm.Show();
                 this.Hide();
             }
             else

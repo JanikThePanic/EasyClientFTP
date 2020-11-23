@@ -70,6 +70,12 @@
     <Compile Include="CreateEntryForm.Designer.cs">
       <DependentUpon>CreateEntryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddFTPKeyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddFTPKeyForm.Designer.cs">
+      <DependentUpon>AddFTPKeyForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SelectEntryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +86,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CreateEntryForm.resx">
       <DependentUpon>CreateEntryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddFTPKeyForm.resx">
+      <DependentUpon>AddFTPKeyForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SelectEntryForm.resx">
       <DependentUpon>SelectEntryForm.cs</DependentUpon>
