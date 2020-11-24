@@ -66,7 +66,7 @@ namespace EasyClientFTP
                 {
                     if (textInput.Text == innerText)
                     {
-                        textInput.ForeColor = System.Drawing.Color.Black;
+                        textInput.ForeColor = Color.Black;
                         textInput.Text = "";
                     }
                 };
@@ -75,7 +75,7 @@ namespace EasyClientFTP
                 {
                     if (string.IsNullOrEmpty(textInput.Text))
                     {
-                        textInput.ForeColor = System.Drawing.Color.Gray;
+                        textInput.ForeColor = Color.Gray;
                         textInput.Text = innerText;
                     }
                 };
@@ -107,8 +107,16 @@ namespace EasyClientFTP
 
         private void AddFTPKeyButton_Click(object sender, EventArgs e)
         {
+            // create addentrykey form and snape some reulsts outa that
             AddFTPKeyForm nextForm = new AddFTPKeyForm();
-            nextForm.ShowDialog();
+            if (nextForm.ShowDialog(this) == DialogResult.OK)
+            {
+                hostName = nextForm.hostName;
+                portNum = nextForm.portNum;
+                userName = nextForm.username;
+                password = nextForm.password;
+            }
+            nextForm.Dispose();
         }
     }
 }
