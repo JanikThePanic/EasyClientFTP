@@ -33,6 +33,7 @@ namespace EasyClientFTP
             this.EntryTypeLabel = new System.Windows.Forms.Label();
             this.AddFTPKeyButton = new System.Windows.Forms.Button();
             this.AddEntryButton = new System.Windows.Forms.Button();
+            this.FTPDetails = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // EntryTypeLabel
@@ -62,12 +63,21 @@ namespace EasyClientFTP
             this.AddEntryButton.TabIndex = 2;
             this.AddEntryButton.Text = "Add Entry";
             this.AddEntryButton.UseVisualStyleBackColor = true;
+            this.AddEntryButton.Click += new System.EventHandler(this.AddEntryButton_Click);
+            // 
+            // FTPDetails
+            // 
+            this.FTPDetails.Location = new System.Drawing.Point(641, 115);
+            this.FTPDetails.Name = "FTPDetails";
+            this.FTPDetails.Size = new System.Drawing.Size(116, 337);
+            this.FTPDetails.TabIndex = 4;
             // 
             // CreateEntryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 461);
+            this.Controls.Add(this.FTPDetails);
             this.Controls.Add(this.AddEntryButton);
             this.Controls.Add(this.AddFTPKeyButton);
             this.Controls.Add(this.EntryTypeLabel);
@@ -88,5 +98,6 @@ namespace EasyClientFTP
         private System.Windows.Forms.Label EntryTypeLabel;
         private System.Windows.Forms.Button AddFTPKeyButton;
         private System.Windows.Forms.Button AddEntryButton;
+        private System.Windows.Forms.Label FTPDetails;
     }
 }

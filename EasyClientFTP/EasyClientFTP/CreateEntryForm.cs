@@ -117,6 +117,42 @@ namespace EasyClientFTP
                 password = nextForm.password;
             }
             nextForm.Dispose();
+
+            // display the ftp details
+            string newLine = Environment.NewLine;
+            this.FTPDetails.Text = "Host:" + newLine + hostName + newLine + newLine + "Port:" + newLine +portNum;
+        }
+
+        private void AddEntryButton_Click(object sender, EventArgs e)
+        {
+            // bool to determin if all boxes are filled
+            bool allFilled = true;
+
+            foreach (Control pulledControl in this.Controls)
+            {
+                if (pulledControl is TextBox)
+                {
+                    if (pulledControl.ForeColor != Color.Black)
+                    {
+                        allFilled = false;
+                    }
+                }
+            }
+
+            if (allFilled)
+            {
+                // all boxes filled
+            }
+            else if (hostName == null)
+            {
+                // no ftp credentials were provided
+                MessageBox.Show("Please Add FTP Key.");
+            }
+            else
+            {
+                // not all filled
+                MessageBox.Show("Please Fill All Textboxes.");
+            }
         }
     }
 }
