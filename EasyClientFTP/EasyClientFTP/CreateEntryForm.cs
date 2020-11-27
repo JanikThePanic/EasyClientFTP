@@ -18,12 +18,12 @@ namespace EasyClientFTP
         int portNum;
         string userName;
         string password;
+        string fileEditing;
 
         public CreateEntryForm()
         {
             // varibles that will hold the information on how many textboxs are need and their innerText
             string[] inputDetails = { "" };
-            string fileEditing;
 
             // code said let there be light
             InitializeComponent();
@@ -142,6 +142,7 @@ namespace EasyClientFTP
             if (allFilled)
             {
                 // all boxes filled
+                FTPHandel.CreateFTPConnection(hostName, portNum, userName, password, fileEditing);
             }
             else if (hostName == null)
             {
