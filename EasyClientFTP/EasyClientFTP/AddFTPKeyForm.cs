@@ -13,8 +13,6 @@ namespace EasyClientFTP
     public partial class AddFTPKeyForm : Form
     {
         // varibles to hold all the jazz
-        public string hostName { get; set; }
-        public int portNum { get; set; }
         public string username { get; set; }
         public string password { get; set; }
 
@@ -23,8 +21,10 @@ namespace EasyClientFTP
             InitializeComponent();
 
             // enter acts as tab nad adds plaholder
+            // runs through all textboxes
             foreach (Control pulledControl in this.Controls)
             {
+                // makes enter work as tab
                 if (pulledControl is TextBox)
                 {
                     pulledControl.KeyDown += (s, e) =>
@@ -91,8 +91,6 @@ namespace EasyClientFTP
             if (allFilled)
             {
                 // all boxes filled
-                hostName = this.HostNameTextbox.Text;
-                portNum = Int16.Parse(this.PortNumTextbox.Text);
                 username = this.UserNameTextbox.Text;
                 password = this.PasswordTextbox.Text;
                 this.DialogResult = DialogResult.OK;
@@ -102,14 +100,6 @@ namespace EasyClientFTP
             {
                 // not
                 MessageBox.Show("Please Fill All Textboxes.");
-            }
-        }
-
-        private void PortNumTextbox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
             }
         }
     }

@@ -10,27 +10,37 @@ namespace EasyClientFTP
 {
     public class FTPHandel
     {
-        public static void CreateFTPConnection(string host, int port, string user, string pass, string file)
+        public static void HandelFTP(string user, string pass, string file)
         {
-            // connect
-            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(host);
-            request.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
+            string localdest = @"C:\Users\Jahangir Abdullayev\Documents\ServerBackups\" + DateTime.Now.ToString("yyyy_MM_dd_hh_mm_ss") + ".xml";
 
+            // file as string
+            String result = String.Empty;
+
+            // connect to file and download it
+            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(file);
             request.Credentials = new NetworkCredential(user, pass);
-            request.KeepAlive = false;
-            request.UseBinary = true;
-            request.UsePassive = true;
+            request.Method = WebRequestMethods.Ftp.DownloadFile;
 
+            // get response
             FtpWebResponse response = (FtpWebResponse)request.GetResponse();
 
-            Stream responseStream = response.GetResponseStream();
-            StreamReader reader = new StreamReader(responseStream);
-            Console.WriteLine(reader.ReadToEnd());
+            // open streams
+            Stream ftpstream = response.GetResponseStream();
+            FileStream fs = new FileStream(localdest, FileMode.Create);
 
-            Console.WriteLine("Directory List Complete, status {0}", response.StatusDescription);
+            // writes file
+            byte[] buffer = new byte[1024];
+            int byteRead = 0;
+            while (byteRead != 0)
+            {
+                byteRead = ftpstream.Read(buffer, 0, 1024);
+                fs.Write(buffer, 0, byteRead);
+            }
 
-            reader.Close();
-            response.Close();
+            // close off streams
+            ftpstream.Close();
+            fs.Close();
         }
     }
 }

@@ -1,0 +1,22 @@
+settings to change in verions of the app without in app settings
+
+change entry names
+SelectEntryForm.cs line 26
+string[] EntryTypesAvailable = { "janik.codes", "repository.tools" };
+
+change entry details per entry name listed above
+CreateEntryForm.cs startings line 36
+if (SelectEntryForm.EntryType == "janik.codes")
+	{
+		inputDetails = new string[] { "title", "image", "type", "date", "rating", "published", "Creator", "thought" };
+                fileEditing = "ftp://files.000webhost.com/public_html/thoughts.xml";
+         }
+else if (SelectEntryForm.EntryType == "repository.tools")
+         {
+                inputDetails = new string[] { "title", "link", "catagory", "description" };
+                fileEditing = "ftp://files.000webhost.com/public_html/entries.xml";
+         }
+
+change backup/temp storage folder
+FTPHandel.cs line 15
+string localdest = @"C:\Users\Jahangir Abdullayev\Documents\ServerBackups\" + DateTime.Now.ToString("yyyy_MM_dd_hh_mm_ss") + ".xml";
