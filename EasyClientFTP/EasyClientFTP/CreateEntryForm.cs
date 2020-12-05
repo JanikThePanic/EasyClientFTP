@@ -157,6 +157,7 @@ namespace EasyClientFTP
             {
                 // all boxes filled
                 FTPHandel.HandelFTP(userName, password, fileEditing);
+                MessageBox.Show("Transaction Complete");
             }
             else if (userName == null)
             {

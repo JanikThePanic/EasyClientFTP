@@ -12,7 +12,9 @@ namespace EasyClientFTP
     {
         public static void HandelFTP(string user, string pass, string file)
         {
-            string localdest = @"C:\Users\Jahangir Abdullayev\Documents\ServerBackups\" + DateTime.Now.ToString("yyyy_MM_dd_hh_mm_ss") + ".xml";
+            // creates name for file and its local desitionation
+            string localName = "BackedUpFile_" + DateTime.Now.ToString("yyyy_MM_dd_hh_mm_ss");
+            string localDest = @"C:\Users\Jahangir Abdullayev\Documents\ServerBackups\" + localName + ".xml";
 
             // file as string
             String result = String.Empty;
@@ -27,20 +29,22 @@ namespace EasyClientFTP
 
             // open streams
             Stream ftpstream = response.GetResponseStream();
-            FileStream fs = new FileStream(localdest, FileMode.Create);
+            FileStream fileStream = new FileStream(localDest, FileMode.Create);
 
             // writes file
             byte[] buffer = new byte[1024];
             int byteRead = 0;
-            while (byteRead != 0)
+            do
             {
-                byteRead = ftpstream.Read(buffer, 0, 1024);
-                fs.Write(buffer, 0, byteRead);
+                byteRead = ftpstream.Read(buffer, 0, buffer.Length);
+                fileStream.Write(buffer, 0, byteRead);
+
             }
+            while (byteRead > 0);
 
             // close off streams
             ftpstream.Close();
-            fs.Close();
+            fileStream.Close();
         }
     }
 }
