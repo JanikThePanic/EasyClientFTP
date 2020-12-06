@@ -10,7 +10,7 @@ namespace EasyClientFTP
 {
     public class FTPHandel
     {
-        public static void HandelFTP(string user, string pass, string file)
+        public static bool HandelFTP(string user, string pass, string file)
         {
             // creates name for file and its local desitionation
             string localName = "BackedUpFile_" + DateTime.Now.ToString("yyyy_MM_dd_hh_mm_ss");
@@ -23,6 +23,18 @@ namespace EasyClientFTP
             FtpWebRequest request = (FtpWebRequest)WebRequest.Create(file);
             request.Credentials = new NetworkCredential(user, pass);
             request.Method = WebRequestMethods.Ftp.DownloadFile;
+
+            // get response
+            try
+            {
+                // get response
+                FtpWebResponse testResponse = (FtpWebResponse)request.GetResponse();
+            }
+            catch
+            {
+                // if theres an error getting a response (usally means a bad password or username)
+                return false;
+            }
 
             // get response
             FtpWebResponse response = (FtpWebResponse)request.GetResponse();
@@ -45,6 +57,8 @@ namespace EasyClientFTP
             // close off streams
             ftpstream.Close();
             fileStream.Close();
+
+            return true;
         }
     }
 }

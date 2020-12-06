@@ -156,8 +156,16 @@ namespace EasyClientFTP
             if (allFilled && userName != null)
             {
                 // all boxes filled
-                FTPHandel.HandelFTP(userName, password, fileEditing);
-                MessageBox.Show("Transaction Complete");
+                // begin ftp connection
+                if (FTPHandel.HandelFTP(userName, password, fileEditing))
+                {
+                    MessageBox.Show("Transaction Complete");
+                    Application.Exit();
+                }
+                else
+                {
+                    MessageBox.Show("Incorrect Username or Password.");
+                }
             }
             else if (userName == null)
             {
