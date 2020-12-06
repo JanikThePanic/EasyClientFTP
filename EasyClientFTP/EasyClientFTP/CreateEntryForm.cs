@@ -14,32 +14,35 @@ namespace EasyClientFTP
 {
     public partial class CreateEntryForm : Form
     {
+        // deatils on username and password
         string userName;
         string password;
+        // file being edited
         string fileEditing;
+        // name of node in the xml file being edited
+        string nodeName;
+        // varibles that will hold the information on how many textboxs are need and their innerText
+        string[] inputDetails = { "" };
 
         public CreateEntryForm()
         {
-            // varibles that will hold the information on how many textboxs are need and their innerText
-            string[] inputDetails = { "" };
-
             // code said let there be light
             InitializeComponent();
 
-
-
-            // write select entry type ontop
+            // write selected entry type ontop
             this.EntryTypeLabel.Text = "Entry Type: " + SelectEntryForm.EntryType.ToString();
 
             // will change amount of textboxs and their properties based on the entry type
             // this will later be made to be saved in the app settings but for no this will do.
-            if (SelectEntryForm.EntryType == "janik.codes")
+            if (SelectEntryForm.EntryType == "janik.codes/thoughts")
             {
+                nodeName = "entry";
                 inputDetails = new string[] { "title", "image", "type", "date", "rating", "published", "Creator", "thought" };
                 fileEditing = "ftp://files.000webhost.com/public_html/thoughts.xml";
             }
             else if (SelectEntryForm.EntryType == "repository.tools")
             {
+                nodeName = "resource";
                 inputDetails = new string[] { "title", "link", "catagory", "description" };
                 fileEditing = "ftp://files.000webhost.com/public_html/entries.xml";
             }
@@ -138,6 +141,9 @@ namespace EasyClientFTP
 
         private void AddEntryButton_Click(object sender, EventArgs e)
         {
+            // name of xml file we're make locally
+            string localName;
+
             // bool to determin if all boxes are filled
             bool allFilled = true;
 
@@ -156,9 +162,17 @@ namespace EasyClientFTP
             if (allFilled && userName != null)
             {
                 // all boxes filled
-                // begin ftp connection
-                if (FTPHandel.HandelFTP(userName, password, fileEditing))
+
+                // make name for localfile
+                localName = "BackedUpFile_" + DateTime.Now.ToString("yyyy_MM_dd_hh_mm_ss") + ".xml";
+                // creates name for file and its local desitionation
+                string localDest = @"C:\Users\Jahangir Abdullayev\Documents\ServerBackups\" + localName;
+
+                // begin ftp connection and if succesful
+                if (FTPHandel.FTPDownloadFile(userName, password, fileEditing, localDest))
                 {
+                    // edit xml file to add current entry
+                    XMLHandel.AddToXML(localDest, nodeName, inputDetails);
                     MessageBox.Show("Transaction Complete");
                     Application.Exit();
                 }

@@ -23,7 +23,7 @@ namespace EasyClientFTP
         private void SelectEntryForm_Load(object sender, EventArgs e)
         {
             // for loop to pull in entry types
-            string[] EntryTypesAvailable = { "janik.codes", "repository.tools" };
+            string[] EntryTypesAvailable = { "janik.codes/thoughts", "repository.tools" };
 
             foreach (string i in EntryTypesAvailable)
             {

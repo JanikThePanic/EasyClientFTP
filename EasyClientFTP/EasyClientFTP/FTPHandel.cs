@@ -10,12 +10,8 @@ namespace EasyClientFTP
 {
     public class FTPHandel
     {
-        public static bool HandelFTP(string user, string pass, string file)
+        public static bool FTPDownloadFile(string user, string pass, string file, string localDest)
         {
-            // creates name for file and its local desitionation
-            string localName = "BackedUpFile_" + DateTime.Now.ToString("yyyy_MM_dd_hh_mm_ss");
-            string localDest = @"C:\Users\Jahangir Abdullayev\Documents\ServerBackups\" + localName + ".xml";
-
             // file as string
             String result = String.Empty;
 
