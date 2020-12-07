@@ -54,7 +54,7 @@ namespace EasyClientFTP
             {
                 // create textboxs for nessary inputs
                 TextBox textInput = new TextBox();
-                // placeholder 
+                // placeholder
                 string innerText = char.ToUpper(inputDetails[i][0]) + inputDetails[i].Substring(1);
                 textInput.ForeColor = System.Drawing.Color.Gray;
                 textInput.Text = innerText;
@@ -64,7 +64,7 @@ namespace EasyClientFTP
                 textInput.Name = inputDetails[i]+"Input";
 
                 // textboxes size on the form
-                // if uits the last textbox, it gets expanded till the border
+                // if its the last textbox, it gets expanded till the border
                 if (i == inputDetails.Length - 1)
                 {
                     textInput.Multiline = true;
