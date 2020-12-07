@@ -11,7 +11,7 @@ namespace EasyClientFTP
 {
     class XMLHandel
     {
-        public static void AddToXML(string localDest, string nodeName, string[] elementNames)
+        public static void AddToXML(string localDest, string nodeName, string[] elementNames, bool lastCDATA)
         {
             // will keep the elementNames and Textbox count in sync
             int textboxCount = 0;
@@ -33,8 +33,8 @@ namespace EasyClientFTP
                     XmlNode pleaseAppend = doc.CreateElement(elementNames[textboxCount]);
 
                     // if its the last textbox, i allow html to be entered so i can make new line and line breaks
-                    // i only need this for janik.codes/thoughts, which has the nodeName of entry
-                    if (textboxCount == elementNames.Length - 1 && nodeName == "entry")
+                    // so checks if its the last, and if lastCDATA is true
+                    if (textboxCount == elementNames.Length - 1 && lastCDATA)
                     {
                         // make cdata node
                         XmlCDataSection CData = doc.CreateCDataSection(pulledControl.Text);

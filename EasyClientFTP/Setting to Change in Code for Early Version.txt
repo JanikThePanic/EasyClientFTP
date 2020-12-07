@@ -1,18 +1,22 @@
-settings to change in verions of the app without in app settings
+settings to change in verions of the app without in-app settings
 
 change entry names
 SelectEntryForm.cs line 26
 string[] EntryTypesAvailable = { "janik.codes", "repository.tools" };
 
-change entry details per entry name listed above
+
+
+change entry details per entry name listed above (inputDetails, fileEditing, nodeName, lastCDATA)
 CreateEntryForm.cs startings line 36
 if (SelectEntryForm.EntryType == "janik.codes")
 	{
+                nodeName = "entry";
 		inputDetails = new string[] { "title", "image", "type", "date", "rating", "published", "Creator", "thought" };
                 fileEditing = "ftp://files.000webhost.com/public_html/thoughts.xml";
          }
 else if (SelectEntryForm.EntryType == "repository.tools")
          {
+                nodeName = "resource";
                 inputDetails = new string[] { "title", "link", "catagory", "description" };
                 fileEditing = "ftp://files.000webhost.com/public_html/entries.xml";
          }

@@ -17,12 +17,14 @@ namespace EasyClientFTP
         // deatils on username and password
         string userName;
         string password;
-        // file being edited
-        string fileEditing;
         // name of node in the xml file being edited
         string nodeName;
+        // bool to determine weather last entry needs CDATA in xml
+        bool lastCDATA;
         // varibles that will hold the information on how many textboxs are need and their innerText
         string[] inputDetails = { "" };
+        // file being edited
+        string fileEditing;
 
         public CreateEntryForm()
         {
@@ -37,12 +39,14 @@ namespace EasyClientFTP
             if (SelectEntryForm.EntryType == "janik.codes/thoughts")
             {
                 nodeName = "entry";
+                lastCDATA = true;
                 inputDetails = new string[] { "title", "image", "type", "date", "rating", "published", "creator", "thought" };
                 fileEditing = "ftp://files.000webhost.com/public_html/thoughts.xml";
             }
             else if (SelectEntryForm.EntryType == "repository.tools")
             {
                 nodeName = "resource";
+                lastCDATA = false;
                 inputDetails = new string[] { "title", "link", "catagory", "description" };
                 fileEditing = "ftp://files.000webhost.com/public_html/entries.xml";
             }
@@ -172,7 +176,7 @@ namespace EasyClientFTP
                 if (FTPHandel.FTPDownloadFile(userName, password, fileEditing, localDest))
                 {
                     // edit xml file to add current entry
-                    XMLHandel.AddToXML(localDest, nodeName, inputDetails);
+                    XMLHandel.AddToXML(localDest, nodeName, inputDetails, lastCDATA);
                     // upload to server
                     FTPHandel.FTPUploadFile(userName, password, fileEditing, localDest);
                     MessageBox.Show("Transaction Complete");
