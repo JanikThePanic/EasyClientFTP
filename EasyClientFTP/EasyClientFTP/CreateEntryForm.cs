@@ -37,7 +37,7 @@ namespace EasyClientFTP
             if (SelectEntryForm.EntryType == "janik.codes/thoughts")
             {
                 nodeName = "entry";
-                inputDetails = new string[] { "title", "image", "type", "date", "rating", "published", "Creator", "thought" };
+                inputDetails = new string[] { "title", "image", "type", "date", "rating", "published", "creator", "thought" };
                 fileEditing = "ftp://files.000webhost.com/public_html/thoughts.xml";
             }
             else if (SelectEntryForm.EntryType == "repository.tools")
@@ -173,6 +173,8 @@ namespace EasyClientFTP
                 {
                     // edit xml file to add current entry
                     XMLHandel.AddToXML(localDest, nodeName, inputDetails);
+                    // upload to server
+                    FTPHandel.FTPUploadFile(userName, password, fileEditing, localDest);
                     MessageBox.Show("Transaction Complete");
                     Application.Exit();
                 }

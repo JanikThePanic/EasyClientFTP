@@ -12,10 +12,7 @@ namespace EasyClientFTP
     {
         public static bool FTPDownloadFile(string user, string pass, string file, string localDest)
         {
-            // file as string
-            String result = String.Empty;
-
-            // connect to file and download it
+            // connect to file and use the download method
             FtpWebRequest request = (FtpWebRequest)WebRequest.Create(file);
             request.Credentials = new NetworkCredential(user, pass);
             request.Method = WebRequestMethods.Ftp.DownloadFile;
@@ -55,6 +52,34 @@ namespace EasyClientFTP
             fileStream.Close();
 
             return true;
+        }
+
+        public static void FTPUploadFile(string user, string pass, string file, string localDest)
+        {
+            // connect to file and use the upload method
+            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(file);
+            request.Credentials = new NetworkCredential(user, pass);
+            request.Method = WebRequestMethods.Ftp.UploadFile;
+
+
+            // get response
+            Stream response = request.GetRequestStream();
+            FileStream fs = File.OpenRead(localDest);
+
+            // writes file
+            byte[] buffer = new byte[1024];
+            int byteRead = 0;
+            do
+            {
+                byteRead = fs.Read(buffer, 0, buffer.Length);
+                response.Write(buffer, 0, byteRead);
+
+            }
+            while (byteRead > 0);
+
+            // close streams
+            response.Close();
+            fs.Close();
         }
     }
 }
